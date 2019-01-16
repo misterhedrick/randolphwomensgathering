@@ -18,7 +18,7 @@
             <th class="text-center">Number Bringing</th>
             <th class="text-center">Remove</th>
           </tr>
-          <tr *ngFor="let person of itemList; let id = index">
+          <tr *ngFor="let person of itemService.itemList; let id = index">
             <td contenteditable="true" (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)">{{person.itemName}}</td>
             <td contenteditable="true" (keyup)="changeValue(id, 'age', $event)" (blur)="updateList(id, 'age', $event)">{{person.numberNeeded}}</td>
             <td contenteditable="true" (keyup)="changeValue(id, 'companyName', $event)" (blur)="updateList(id, 'companyName', $event)">{{person.volunteerName}}</td>
