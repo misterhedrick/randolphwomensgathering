@@ -40,6 +40,9 @@ export class ItemService {
       console.log('Added document with ID: ', ref.id);
     });
   }
+  signup(item: Item) {
+    console.log(item.itemName);
+  }
   setCurrentItem(item: Item) {
     this.currentItem = item;
   }

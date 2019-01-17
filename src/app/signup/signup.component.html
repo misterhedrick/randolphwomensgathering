@@ -1,28 +1,45 @@
 <div class="container">
-  <form class="form-group" [formGroup]="updateIssueForm" (ngSubmit)="onSubmit()">
+  <form class="form-group" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="card">
       <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Signup Sheet</h3>
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <input disabled="true" formControlNamevalue="itemName" value="{{itemService.currentItem.itemName}}">
+            <div class="md-form">
+              <input type="text" id="itemName" class="form-control" mdbInputDirective [mdbValidate]="false" disabled="true"
+                formControlName="itemName" />
+              <label for="itemName">Item</label>
+            </div>
           </div>
           <div class="col">
-            <input disabled="true" formControlNamevalue="itemName" value="{{itemService.currentItem.numberNeeded}}">
+            <div class="md-form">
+              <input type="text" id="numberNeeded" class="form-control" mdbInputDirective [mdbValidate]="false"
+                disabled="true" formControlName="numberNeeded">
+              <label for="numberNeeded">Number Needed</label>
+            </div>
           </div>
           <div class="col">
-            <input formControlNamevalue="itemName" value="{{itemService.currentItem.volunteerName}}">
+            <div class="md-form">
+              <input type="text" id="volunteerName" class="form-control" mdbInputDirective formControlName="volunteerName">
+              <label for="volunteerName">Name</label>
+            </div>
           </div>
           <div class="col">
-            <input formControlNamevalue="itemName" value="{{itemService.currentItem.email}}">
+            <div class="md-form">
+              <input type="text" id="email" class="form-control" mdbInputDirective formControlName="email">
+              <label for="email">Email</label>
+            </div>
           </div>
           <div class="col">
-            <input formControlNamevalue="itemName" value="{{itemService.currentItem.numberBringing}}">
+            <div class="md-form">
+              <input type="text" id="numberBringing" class="form-control" mdbInputDirective formControlName="numberBringing">
+              <label for="numberBringing">Number Bringing</label>
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <button routerLink="/home" type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
         <div class="row">
