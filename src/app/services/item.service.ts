@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Item } from './item';
+import { Item } from '../signup/item';
 @Injectable()
 export class ItemService {
   itemList: Item[] = [];
+  currentItem: Item;
   constructor(private afStore: AngularFirestore) {
-
+    this.getItems();
   }
   getItems() {
     this.afStore.collection<Item>('items')
@@ -22,6 +21,14 @@ export class ItemService {
         }
       });
   }
+  updateItem(item: Item) {
+    console.log("number bringing", item.numberBringing);
+    // var updateItem = this.afStore.collection('items').doc('napkins');
+    // var updateSingle = updateItem.update({ numberNeeded: 10 });
+    // return Promise.all([updateSingle]).then(res => {
+    //   console.log('Update: ', res);
+    // });
+  }
   addItem() {
     var addDoc = this.afStore.collection('items').add({
       itemName: 'napkins',
@@ -32,5 +39,8 @@ export class ItemService {
       this.getItems();
       console.log('Added document with ID: ', ref.id);
     });
+  }
+  setCurrentItem(item: Item) {
+    this.currentItem = item;
   }
 }

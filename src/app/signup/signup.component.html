@@ -1,39 +1,36 @@
 <div class="container">
-  <!-- Editable table -->
-  <div class="card">
-    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Signup Sheet</h3>
-    <div class="card-body">
-      <div id="table" class="table-editable">
-        <span class="table-add float-right mb-3 mr-2">
-          <a class="text-success" (click)="add()">
-            <mdb-icon icon="plus" size="2x"></mdb-icon>
-          </a>
-        </span>
-        <table class="table table-bordered table-fixed table-responsive-md table-striped text-center">
-          <tr>
-            <th class="text-center">Item</th>
-            <th class="text-center">Number Needed</th>
-            <th class="text-center">Name</th>
-            <th class="text-center">Email</th>
-            <th class="text-center">Number Bringing</th>
-            <th class="text-center">Remove</th>
-          </tr>
-          <tr *ngFor="let person of itemService.itemList; let id = index">
-            <td contenteditable="true" (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)">{{person.itemName}}</td>
-            <td contenteditable="true" (keyup)="changeValue(id, 'age', $event)" (blur)="updateList(id, 'age', $event)">{{person.numberNeeded}}</td>
-            <td contenteditable="true" (keyup)="changeValue(id, 'companyName', $event)" (blur)="updateList(id, 'companyName', $event)">{{person.volunteerName}}</td>
-            <td contenteditable="true" (keyup)="changeValue(id, 'country', $event)" (blur)="updateList(id, 'country', $event)">{{person.email}}</td>
-            <td contenteditable="true" (keyup)="changeValue(id, 'city', $event)" (blur)="updateList(id, 'city', $event)">{{person.numberBringing}}</td>
-            <td>
-              <span class="table-remove">
-                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Sign
-                  Up</button>
-              </span>
-            </td>
-          </tr>
-        </table>
+  <form class="form-group" [formGroup]="updateIssueForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+      <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Signup Sheet</h3>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <input disabled="true" formControlNamevalue="itemName" value="{{itemService.currentItem.itemName}}">
+          </div>
+          <div class="col">
+            <input disabled="true" formControlNamevalue="itemName" value="{{itemService.currentItem.numberNeeded}}">
+          </div>
+          <div class="col">
+            <input formControlNamevalue="itemName" value="{{itemService.currentItem.volunteerName}}">
+          </div>
+          <div class="col">
+            <input formControlNamevalue="itemName" value="{{itemService.currentItem.email}}">
+          </div>
+          <div class="col">
+            <input formControlNamevalue="itemName" value="{{itemService.currentItem.numberBringing}}">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <button routerLink="/home" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <button routerLink="/home" class="btn btn-secondary">Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Editable table -->
+  </form>
 </div>

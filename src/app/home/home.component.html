@@ -1,0 +1,34 @@
+<div class="container">
+  <!-- Editable table -->
+  <div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Signup Sheet</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <!-- <span class="table-add float-right mb-3 mr-2">
+          <a class="text-success" (click)="itemService.addItem()">
+            <mdb-icon icon="plus" size="2x"></mdb-icon>
+          </a>
+        </span> -->
+        <table class="table table-bordered table-fixed table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Item</th>
+            <th class="text-center">Number Needed</th>
+            <th class="text-center">Sign Up</th>
+          </tr>
+          <tr *ngFor="let item of itemService.itemList; let id = index">
+            <td contenteditable="true">{{item.itemName}}</td>
+            <td contenteditable="true">{{item.numberNeeded}}</td>
+            <td>
+              <span class="table-remove">
+                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" routerLink="/signup"
+                  (click)="itemService.setCurrentItem(item)">Sign
+                  Up</button>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- Editable table -->
+</div>
