@@ -9,7 +9,7 @@ import { ItemService } from '../services/item.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  private signupForm;
+  public signupForm;
   constructor(public itemService: ItemService) {
 
 
@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     const itemName = this.signupForm.get("itemName").value;
     const numberNeeded = this.signupForm.get("numberNeeded").value;
     const volunteerName = this.signupForm.get("volunteerName").value;
