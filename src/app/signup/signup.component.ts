@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Item } from './item';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ItemService } from '../services/item.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ import { ItemService } from '../services/item.service';
 })
 export class SignupComponent implements OnInit {
   public signupForm;
-  constructor(public itemService: ItemService) {
+  constructor(public itemService: ItemService, private router: Router) {
 
 
   }
@@ -30,8 +31,11 @@ export class SignupComponent implements OnInit {
     const volunteerName = this.signupForm.get("volunteerName").value;
     const email = this.signupForm.get("email").value;
     const numberBringing = this.signupForm.get("numberBringing").value;
-
-    console.log(itemName + numberBringing);
+    this.itemService.currentItem.numberBringing = numberBringing;
+    this.itemService.currentItem.volunteerName = volunteerName;
+    this.itemService.currentItem.email = email;
+    this.itemService.updateItem(this.itemService.currentItem);
+    this.router.navigate(["home"]);
   }
 
 }

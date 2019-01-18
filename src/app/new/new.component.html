@@ -1,0 +1,36 @@
+<div class="container">
+  <form class="form-group" [formGroup]="newForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+      <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Signup Sheet</h3>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div class="md-form">
+              <input type="text" id="itemName" class="form-control" mdbInputDirective [mdbValidate]="false"
+                formControlName="itemName" />
+              <label for="itemName">Item</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="md-form">
+              <input type="text" id="numberNeeded" class="form-control" mdbInputDirective [mdbValidate]="false"
+                formControlName="numberNeeded">
+              <label for="numberNeeded">Number Needed</label>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <button routerLink="/home" class="btn btn-secondary">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

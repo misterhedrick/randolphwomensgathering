@@ -12,12 +12,14 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
 import { ItemService } from './services/item.service';
 import { HomeComponent } from './home/home.component';
+import { NewComponent } from './new/new.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    NewComponent
   ],
   imports: [
     BrowserModule,

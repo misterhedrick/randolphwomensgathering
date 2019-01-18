@@ -1,5 +1,5 @@
 export class Item {
-  id: number;
+  id: string;
   itemName: string;
   numberNeeded: number;
   volunteerName: string;

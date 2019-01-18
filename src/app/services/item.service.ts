@@ -11,33 +11,29 @@ export class ItemService {
   getItems() {
     this.afStore.collection<Item>('items')
       .snapshotChanges().subscribe(results => {
+        this.itemList = [];
         for (const item of results) {
           const itemObject = new Item();
           itemObject.itemName = item.payload.doc.data().itemName;
           itemObject.numberNeeded = item.payload.doc.data().numberNeeded;
           itemObject.volunteerName = item.payload.doc.data().volunteerName;
           itemObject.numberBringing = item.payload.doc.data().numberBringing;
+          itemObject.id = item.payload.doc.id;
           this.itemList.push(itemObject);
         }
       });
   }
   updateItem(item: Item) {
-    console.log("number bringing", item.numberBringing);
-    // var updateItem = this.afStore.collection('items').doc('napkins');
-    // var updateSingle = updateItem.update({ numberNeeded: 10 });
-    // return Promise.all([updateSingle]).then(res => {
-    //   console.log('Update: ', res);
-    // });
+    this.afStore.collection("items").doc(item.id).update({
+      "numberNeeded": item.numberNeeded - item.numberBringing
+    });
   }
-  addItem() {
-    var addDoc = this.afStore.collection('items').add({
-      itemName: 'napkins',
-      numberNeeded: 25,
-      volunteerName: '',
+  newItem(itemName, numberNeeded) {
+    this.afStore.collection("items").add({
+      itemName: itemName,
+      numberNeeded: numberNeeded,
+      volunteerName: "",
       numberBringing: 0
-    }).then(ref => {
-      this.getItems();
-      console.log('Added document with ID: ', ref.id);
     });
   }
   signup(item: Item) {
