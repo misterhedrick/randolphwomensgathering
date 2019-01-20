@@ -1,0 +1,29 @@
+<div class="container">
+  <!-- Editable table -->
+  <div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Who Attended: Total Number
+      {{registerService.totalNumber}}</h3>
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <!-- <span class="table-add float-right mb-3 mr-2">
+          <a class="text-success" (click)="itemService.addItem()">
+            <mdb-icon icon="plus" size="2x"></mdb-icon>
+          </a>
+        </span> -->
+        <table class="table table-bordered table-fixed table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Church</th>
+          </tr>
+          <tr *ngFor="let person of registerService.registeredList; let id = index">
+            <td contenteditable="true">{{person.name}}</td>
+            <td contenteditable="true">{{person.email}}</td>
+            <td contenteditable="true">{{person.church}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- Editable table -->
+</div>

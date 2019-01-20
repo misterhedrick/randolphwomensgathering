@@ -14,6 +14,9 @@ import { ItemService } from './services/item.service';
 import { HomeComponent } from './home/home.component';
 import { NewComponent } from './new/new.component';
 import { WhosignedupComponent } from './whosignedup/whosignedup.component';
+import { RegisterComponent } from './register/register.component';
+import { RegisterService } from './services/register.service';
+import { WhoAttendedComponent } from './who-attended/who-attended.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { WhosignedupComponent } from './whosignedup/whosignedup.component';
     SignupComponent,
     HomeComponent,
     NewComponent,
-    WhosignedupComponent
+    WhosignedupComponent,
+    RegisterComponent,
+    WhoAttendedComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,7 @@ import { WhosignedupComponent } from './whosignedup/whosignedup.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [MDBSpinningPreloader, ItemService],
+  providers: [MDBSpinningPreloader, ItemService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

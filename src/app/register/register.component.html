@@ -1,0 +1,42 @@
+<div class="container">
+  <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+      <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Thank you for coming! Please register
+        here</h3>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div class="md-form">
+              <input type="text" id="name" class="form-control" mdbInputDirective [mdbValidate]="true" formControlName="name" />
+              <label for="name">Name</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="md-form">
+              <input type="text" id="email" class="form-control" mdbInputDirective [mdbValidate]="true" formControlName="email">
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="md-form">
+              <input type="text" id="church" class="form-control" [mdbValidate]="false" mdbInputDirective
+                formControlName="church">
+              <label for="church">Home Church</label>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <button (click)="clearForm()" class="btn btn-secondary">Clear Inputs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
