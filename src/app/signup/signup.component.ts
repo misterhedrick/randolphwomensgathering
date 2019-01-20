@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Item } from './item';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ItemService } from '../services/item.service';
 import { Router } from '@angular/router';
