@@ -35,6 +35,7 @@ export class SignupComponent implements OnInit {
     this.itemService.currentItem.volunteerName = volunteerName;
     this.itemService.currentItem.email = email;
     this.itemService.updateItem(this.itemService.currentItem);
+    this.itemService.addWhoSignedUp();
     this.router.navigate(["home"]);
   }
 

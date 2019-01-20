@@ -13,13 +13,15 @@ import { environment } from '../environments/environment';
 import { ItemService } from './services/item.service';
 import { HomeComponent } from './home/home.component';
 import { NewComponent } from './new/new.component';
+import { WhosignedupComponent } from './whosignedup/whosignedup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     HomeComponent,
-    NewComponent
+    NewComponent,
+    WhosignedupComponent
   ],
   imports: [
     BrowserModule,

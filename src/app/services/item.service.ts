@@ -4,9 +4,11 @@ import { Item } from '../signup/item';
 @Injectable()
 export class ItemService {
   itemList: Item[] = [];
+  whoSignedUp: Item[] = [];
   currentItem: Item;
   constructor(private afStore: AngularFirestore) {
     this.getItems();
+    this.getWhoSignedUp();
   }
   getItems() {
     this.afStore.collection<Item>('items')
@@ -23,6 +25,23 @@ export class ItemService {
         }
       });
   }
+
+  getWhoSignedUp() {
+    this.afStore.collection<Item>('whoSignedUp')
+      .snapshotChanges().subscribe(results => {
+        this.whoSignedUp = [];
+        for (const item of results) {
+          const itemObject = new Item();
+          itemObject.itemName = item.payload.doc.data().itemName;
+          itemObject.email = item.payload.doc.data().email;
+          itemObject.volunteerName = item.payload.doc.data().volunteerName;
+          itemObject.numberBringing = item.payload.doc.data().numberBringing;
+          itemObject.id = item.payload.doc.id;
+          this.whoSignedUp.push(itemObject);
+        }
+      });
+  }
+
   updateItem(item: Item) {
     this.afStore.collection("items").doc(item.id).update({
       "numberNeeded": item.numberNeeded - item.numberBringing
@@ -34,6 +53,14 @@ export class ItemService {
       numberNeeded: numberNeeded,
       volunteerName: "",
       numberBringing: 0
+    });
+  }
+  addWhoSignedUp() {
+    this.afStore.collection("whoSignedUp").add({
+      itemName: this.currentItem.itemName,
+      numberBringing: this.currentItem.numberBringing,
+      volunteerName: this.currentItem.volunteerName,
+      email: this.currentItem.email
     });
   }
   signup(item: Item) {
