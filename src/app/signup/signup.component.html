@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="form-group" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <form class="form-group" [formGroup]="signupForm" (ngSubmit)="signupForm.valid && onSubmit()">
     <div class="card">
       <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Signup Sheet</h3>
       <div class="card-body">
@@ -20,20 +20,21 @@
           </div>
           <div class="col">
             <div class="md-form">
-              <input type="text" id="volunteerName" class="form-control" mdbInputDirective formControlName="volunteerName">
-              <label for="volunteerName">Name</label>
+              <input type="text" required id="volunteerName" class="form-control" mdbInput mdbInputDirective
+                formControlName="volunteerName">
+              <label for="volunteerName">Name (required)</label>
             </div>
           </div>
           <div class="col">
             <div class="md-form">
-              <input type="text" id="email" class="form-control" mdbInputDirective formControlName="email">
-              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" mdbInput mdbInputDirective formControlName="email">
+              <label for="email">Email (required)</label>
             </div>
           </div>
           <div class="col">
             <div class="md-form">
-              <input type="text" id="numberBringing" class="form-control" mdbInputDirective formControlName="numberBringing">
-              <label for="numberBringing">Number Bringing</label>
+              <input type="number" id="numberBringing" class="form-control" mdbInput mdbInputDirective formControlName="numberBringing">
+              <label for="numberBringing">Number Bringing (required)</label>
             </div>
           </div>
         </div>
